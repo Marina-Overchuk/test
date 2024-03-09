@@ -478,7 +478,7 @@ header {
       transform: rotate(180deg);
     }
   }
-  
+
 
   @media (max-width: 1279px) {
     text-align: center;
@@ -495,7 +495,6 @@ header {
 li.menu-item-has-children.active {
   color: var(--darkblue);
 }
-
 .menu-item:not(.menu-item-has-children) {
   line-height: 1;
 }

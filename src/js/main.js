@@ -19,8 +19,7 @@
 
     });
 
-
-    //sub-menu
+    //SUB-MENU =======================================================================================
     $(".menu-item-has-children").click(function () {
       if (window.matchMedia('(max-width: 1279px)').matches) {
         $(".sub-menu").not($(this).find(".sub-menu")).removeClass("open");
@@ -30,7 +29,6 @@
         $(this).toggleClass('open');
       }
     });
-
 
     // HEADER-SCROLL ========================================================================================================================================================
 
@@ -64,6 +62,7 @@
     });
 
     //FAQ ===============================================================================
+    
     $('.accordion-header').click(function () {
 
       $(this).toggleClass('active').next('.accordion-content').slideToggle();
@@ -71,7 +70,8 @@
       $('.accordion-header').not(this).removeClass('active').next('.accordion-content').slideUp();
     });
 
-    //APPEND SOC ICON ==========================================================
+    //APPEND SOC ICON ON MOBILE==========================================================
+   
     function appendSocIcon() {
       if (window.matchMedia("(min-width: 576px)").matches) {
         $('.header__soc-icon').insertAfter('.header__language')
@@ -86,7 +86,7 @@
       appendSocIcon();
     });
 
-    //Animation h1 hero section
+    //ANIMATION h1 HERO SECTION ============================================================
     gsap.registerPlugin(ScrollTrigger);
 
     const text = document.querySelectorAll('.text');
@@ -111,6 +111,23 @@
       y: 30,
       duration: 0.8,
       stagger: 0.06,
+    });
+
+    // Animation blocks FAQ ========================================================
+    let observer = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry, index) {
+        if (entry.isIntersecting) {
+          let tl = new TimelineMax();
+          tl.fromTo(entry.target, { autoAlpha: 0, y: 50 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: Power2.easeInOut, delay: index * 0.2 });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 }); 
+
+    let items = document.querySelectorAll('.accordion-item');
+
+    items.forEach(function(item) {
+      observer.observe(item);
     });
 
 

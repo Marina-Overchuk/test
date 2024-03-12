@@ -27,6 +27,7 @@
 
         $(".menu-item-has-children").not($(this)).removeClass('open');
         $(this).toggleClass('open');
+
       }
     });
 

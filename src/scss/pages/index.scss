@@ -442,12 +442,6 @@ header {
   }
 }
 
-.menu-item-has-children.open:after {
-  @media (min-width: 1280px) {
-    transform: rotate(180deg);
-  }
-}
-
 .menu-item-has-children {
   position: relative;
   display: flex;
@@ -475,10 +469,11 @@ header {
 
   &:hover {
     &:after {
-      transform: rotate(180deg);
+      @media (min-width: 1280px) {
+        transform: rotate(180deg);
+      }
     }
   }
-
 
   @media (max-width: 1279px) {
     text-align: center;
@@ -488,6 +483,12 @@ header {
   @media (max-width: 575px) {
     text-align: left;
     align-items: flex-start;
+  }
+}
+
+.menu-item-has-children.open:after { 
+  @media (max-width: 1279px) {
+    transform: rotate(180deg);
   }
 }
 
